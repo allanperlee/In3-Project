@@ -1,8 +1,14 @@
 import in3
+#address = "0x6C095A05764A23156eFD9D603eaDa144a9B1AF33"
 
-in3_client = in3.Client()
+client = in3.Client()
+latest_block = client.eth.block_number()
+gas_price = client.eth.gas_price()
 
-# Sends a request to the Incubed Network, that in turn will collect proofs from the Ethereum client, 
-# attest and sign the response, then send back to the client, that will verify signatures and proofs. 
-block_number = in3_client.eth.block_number()
+client = in3.Client('kovan')
+latest_block = client.eth.block_number()
+gas_price = client.eth.gas_price()
 
+client = in3.Client('goerli')
+latest_block = client.eth.block_number()
+gas_price = client.eth.gas_price()

@@ -1,9 +1,12 @@
 import PySimpleGUI as sg
-from test import block_number
+from test import client, latest_block, gas_price
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
-layout = [[sg.Button("Print Ethereum's last block"), sg.Button('Exit')],
+layout = [[sg.Button("Ethereum Main Network")],
+[sg.Button("Kovan Test Network")],
+[sg.Button("Goerli Test Network")],
+[sg.Button("Exit")]
  ]
 
 # Create the Window
@@ -13,7 +16,12 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
-    if event == "Print Ethereum's last block":
-        sg.Print(block_number)
+    if event == "Ethereum Main Network":
+        sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
+    elif event == "Kovan Test Network":
+        sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
+    else:
+        sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
+    
 
 window.close()
