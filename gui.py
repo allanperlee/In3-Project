@@ -3,9 +3,11 @@ from test import client, latest_block, gas_price
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
-layout = [[sg.Button("Ethereum Main Network")],
+layout = [
+[sg.Button("Ethereum Main Network")],
 [sg.Button("Kovan Test Network")],
 [sg.Button("Goerli Test Network")],
+[sg.Button("Send Transaction")],
 [sg.Button("Exit")]
  ]
 
@@ -16,12 +18,14 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
-    if event == "Ethereum Main Network":
+    elif event == "Ethereum Main Network":
         sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
     elif event == "Kovan Test Network":
         sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
-    else:
+    elif event == "Goerli Test Network":
         sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
+    elif event == "Send Transaction":
+        exec(open('dp2.py').read())
     
 
 window.close()
