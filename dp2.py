@@ -16,8 +16,8 @@ layout = [
 window = sg.Window('Ethereum Transaction with Incubed', layout)
 event, values = window.read()
 window.close()
-sender_secret = values[0]
-receiver = values[1]
+sender_secret = str(values[0])
+receiver = str(values[1])
 value_in_wei = values[2]  # the input data looks like a simple list when auto numbered
 
 # Event Loop to process "events" and get the "values" of the inputs

@@ -8,6 +8,7 @@ layout = [
 [sg.Button("Kovan Test Network")],
 [sg.Button("Goerli Test Network")],
 [sg.Button("Send Transaction")],
+[sg.Button("List of Nodes")],
 [sg.Button("Exit")]
  ]
 
@@ -26,6 +27,8 @@ while True:
         sg.Print('Latest BN: {}\nGas Price: {} Wei'.format(latest_block, gas_price))
     elif event == "Send Transaction":
         exec(open('dp2.py').read())
+    else:
+        exec(open('uinodes.py').read())
     
 
 window.close()
