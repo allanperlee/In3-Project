@@ -20,7 +20,7 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
     elif event == "Mainnet":
-        # on every event, the client is instantiated differently and the list of client nodes are refreshed
+        # on every event, the client is instantiated differently and the list of client nodes are refreshedgt
         client = in3.Client("Mainnet")
         node_list = client.refresh_node_list()
 

@@ -2,13 +2,17 @@ import json
 import in3
 import time
 
-sender_secret = ""
-receiver = ""
+
+# On Metamask, be sure to be connected to the correct chain, click on the `...` icon on the right corner of
+# your Account name, select `Account Details`. There, click `Export Private Key`, copy the value to use as secret.
+# By reading the terminal input, this value will stay in memory only. Don't forget to cls or clear terminal after ;)
+sender_secret = input("Sender secret: ")
+receiver = input("Receiver address: ")
 #     1000000000000000000 == 1 ETH
 #              1000000000 == 1 Gwei Check https://etherscan.io/gasTracker.
-value_in_wei = 0
+value_in_wei = 1463926659
 # None for Eth mainnet
-chain = 'goerli'
+chain = 'kovan'
 client = in3.Client(chain if chain else 'mainnet')
 # A transaction is only final if a certain number of blocks are mined on top of it.
 # This number varies with the chain's consensus algorithm. Time can be calculated over using:
@@ -17,10 +21,11 @@ client = in3.Client(chain if chain else 'mainnet')
 confirmation_wait_time_in_seconds = 30
 etherscan_link_mask = 'https://{}{}etherscan.io/tx/{}'
 
+print('-= Ethereum Transaction using Incubed =- \n')
 try:
     sender = client.eth.account.recover(sender_secret)
     tx = in3.eth.NewTransaction(to=receiver, value=value_in_wei)
-    
+    print('[.] Sending {} Wei from {} to {}. Please wait.\n'.format(tx.value, sender.address, tx.to))
     tx_hash = client.eth.account.send_transaction(sender, tx)
     print('[.] Transaction accepted with hash {}.'.format(tx_hash))
     add_dot_if_chain = '.' if chain else ''
