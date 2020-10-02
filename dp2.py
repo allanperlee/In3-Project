@@ -3,6 +3,8 @@ import json
 import in3
 import time
 
+# Tested the UI with a Private Key provided by Ganache CLI and kept asking for the sender secret, still needs to be tested with a real private key
+
 sg.theme('Topanga')      # Add some color to the window
 
 # Very basic window.  Return values using auto numbered keys
@@ -21,8 +23,6 @@ receiver = ""
 #     1000000000000000000 == 1 ETH
 #              1000000000 == 1 Gwei Check https://etherscan.io/gasTracker.
 value_in_wei = 0
-# None for Eth mainnet
-
 
 # A transaction is only final if a certain number of blocks are mined on top of it.
 # This number varies with the chain's consensus algorithm. Time can be calculated over using:

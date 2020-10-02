@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import in3
 
+#Tested the API with the "depraz.eth" domain and returned exactly what should be returned based on the In3 documentation
 
 sg.theme('Topanga')      # Add some color to the window
 
@@ -36,7 +37,7 @@ while True:                             # The Event Loop
     owner = client.ens_owner(domain)
     _print()
 
-# Instantiate In3 Client for Kovan
+    # Instantiate In3 Client for Kovan
     chain = 'kovan'
     client = in3.Client(chain, cache_enabled=True)
     try:
